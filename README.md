@@ -1,24 +1,23 @@
 # 🖥️ Termux Dynamic Banner - Personalize Your Terminal! 🚀  
+Transform your Termux terminal's welcome screen with a fully customizable banner! 🌟  
+Add your name, ASCII art, colorful text, and stylish FIGlet/Cowsay fonts to make your Termux startup screen stand out! 😍  
 
-Transform your Termux terminal's welcome screen with a fully customizable banner! 🌟 Add your name, ASCII art, colorful text, and stylish FIGlet/Cowsay fonts to make your Termux startup screen stand out! 😍  
-
----
-
-## ✨ Features:
+## ✨ Features:  
 ✅ **Custom Banner:** Personalize your Termux startup screen with your own text and designs.  
 ✅ **FIGlet & Cowsay Support:** Use cool fonts and ASCII art to enhance your banner.  
 ✅ **Auto Load on Startup:** Your custom banner appears every time you launch Termux.  
 ✅ **Lightweight & Fast:** Loads quickly without extra dependencies.  
 
----
-
-## ⚡ Installation:
+## ⚡ Installation:  
 ```bash
+pkg update && pkg upgrade -y  
+pkg install figlet -y  
+pkg install ruby -y  
+gem install lolcat  
 git clone https://github.com/rayhankhan4u/Termux-Banner.git  
 cd Termux-Banner  
 chmod +x t-banner.sh  
 bash t-banner.sh
-
 
 🎨 How to Customize Your Banner
 
@@ -50,7 +49,7 @@ Also, don't forget to ⭐ Star this repository to support the project!
 
 📞 Contact
 
-Created by Rayhan
+Created by: Rayhan
 🔗 GitHub: rayhankhan4u
 📧 Email: rayhankhan4u@gmail.com
 
