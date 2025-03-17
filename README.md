@@ -17,8 +17,7 @@ pkg install ruby -y
 gem install lolcat  
 git clone https://github.com/rayhankhan4u/Termux-Banner.git  
 cd Termux-Banner  
-chmod +x t-banner.sh
-touch ~/.bashrc 
+chmod +x t-banner.sh 
 bash t-banner.sh
 
 🎨 How to Customize Your Banner
