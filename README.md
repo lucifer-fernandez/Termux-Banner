@@ -10,13 +10,15 @@ Add your name, ASCII art, colorful text, and stylish FIGlet/Cowsay fonts to make
 
 ## ⚡ Installation:  
 ```bash
-pkg update && pkg upgrade -y  
+pkg update && pkg upgrade -y
+pkg install cowsay -y
 pkg install figlet -y  
 pkg install ruby -y  
 gem install lolcat  
 git clone https://github.com/rayhankhan4u/Termux-Banner.git  
 cd Termux-Banner  
-chmod +x t-banner.sh  
+chmod +x t-banner.sh
+touch ~/.bashrc 
 bash t-banner.sh
 
 🎨 How to Customize Your Banner
