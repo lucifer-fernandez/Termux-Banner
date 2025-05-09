@@ -25,15 +25,15 @@ gem install lolcat
 
 ### Installation Method 1 (Direct Download)
 ```bash
-wget https://raw.githubusercontent.com/yourusername/yourrepo/main/termux-banner.sh
+wget https://raw.githubusercontent.com/rayhankhan4u/Termux-Banner/main/termux-banner.sh
 chmod +x termux-banner.sh
 ./termux-banner.sh
 ```
 
 ### Installation Method 2 (Git Clone)
 ```bash
-git clone https://github.com/yourusername/yourrepo.git
-cd yourrepo
+git clone https://github.com/rayhankhan4u/Termux-Banner.git
+cd Termux-Banner
 chmod +x termux-banner.sh
 ./termux-banner.sh
 ```
