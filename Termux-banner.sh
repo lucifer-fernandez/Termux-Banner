@@ -1,5 +1,19 @@
 #!/bin/bash
 
+# Check if running on Termux
+if [ ! -d "$PREFIX" ]; then
+    echo "This script must be run in Termux. Exiting."
+    exit 1
+fi
+
+# Install required packages
+pkg update -y && pkg install -y git curl wget neofetch figlet toilet ruby
+
+# Install lolcat if not installed
+if ! command -v lolcat &> /dev/null; then
+    gem install lolcat
+fi
+
 # Colors
 RED='\033[1;31m'
 GREEN='\033[1;32m'
@@ -10,61 +24,103 @@ CYAN='\033[1;36m'
 WHITE='\033[1;37m'
 NC='\033[0m'
 
+# Animation function
+animate() {
+    local text=$1
+    for ((i=0; i<${#text}; i++)); do
+        echo -n "${text:$i:1}"
+        sleep 0.03
+    done
+    echo
+}
+
 clear
 
-# Banner art
-echo -e "${PURPLE}___________________________________________________________"
-echo -e "${CYAN}                                                          "
-echo -e "${CYAN}    ████████╗███████╗██████╗ ███╗   ███╗██╗   ██╗██╗  ██╗"
-echo -e "${CYAN}    ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║   ██║╚██╗██╔╝"
-echo -e "${CYAN}       ██║   █████╗  ██████╔╝██╔████╔██║██║   ██║ ╚███╔╝ "
-echo -e "${CYAN}       ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║   ██║ ██╔██╗ "
-echo -e "${CYAN}       ██║   ███████╗██║  ██║██║ ╚═╝ ██║╚██████╔╝██╔╝ ██╗"
-echo -e "${CYAN}       ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝"
-echo -e "${PURPLE}___________________________________________________________"
-echo -e "${RED}                                                          "
-echo -e "${RED}     ██████╗  █████╗ ███╗   ██╗███╗   ██╗███████╗██████╗   "
-echo -e "${RED}     ██╔══██╗██╔══██╗████╗  ██║████╗  ██║██╔════╝██╔══██╗  "
-echo -e "${RED}     ██████╔╝███████║██╔██╗ ██║██╔██╗ ██║█████╗  ██████╔╝  "
-echo -e "${RED}     ██╔══██╗██╔══██║██║╚██╗██║██║╚██╗██║██╔══╝  ██╔══██╗  "
-echo -e "${RED}     ██████╔╝██║  ██║██║ ╚████║██║ ╚████║███████╗██║  ██║  "
-echo -e "${RED}     ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝  "
-echo -e "${PURPLE}___________________________________________________________"
-echo -e "${YELLOW}                                                          "
-echo -e "${YELLOW}                      by ${WHITE}RAYHAN ${YELLOW}                      "
-echo -e "${PURPLE}___________________________________________________________${NC}"
+# Awesome intro animation
+echo -e "${RED}___________________________________________________________"
+animate "${CYAN} ████████╗███████╗██████╗ ███╗   ███╗██╗   ██╗██╗  ██╗"
+animate "${CYAN} ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║   ██║╚██╗██╔╝"
+animate "${CYAN}    ██║   █████╗  ██████╔╝██╔████╔██║██║   ██║ ╚███╔╝ "
+animate "${CYAN}    ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║   ██║ ██╔██╗ "
+animate "${CYAN}    ██║   ███████╗██║  ██║██║ ╚═╝ ██║╚██████╔╝██╔╝ ██╗"
+animate "${CYAN}    ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝"
+echo -e "${RED}___________________________________________________________"
+animate "${PURPLE} ██████╗  █████╗ ███╗   ██╗███╗   ██╗███████╗██████╗ "
+animate "${PURPLE}██╔══██╗██╔══██╗████╗  ██║████╗  ██║██╔════╝██╔══██╗"
+animate "${PURPLE}██████╔╝███████║██╔██╗ ██║██╔██╗ ██║█████╗  ██████╔╝"
+animate "${PURPLE}██╔══██╗██╔══██║██║╚██╗██║██║╚██╗██║██╔══╝  ██╔══██╗"
+animate "${PURPLE}██████╔╝██║  ██║██║ ╚████║██║ ╚████║███████╗██║  ██║"
+animate "${PURPLE}╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝"
+echo -e "${RED}___________________________________________________________"
+animate "${YELLOW}               C R E A T E D   B Y               "
+toilet -f future " R A Y H A N " | lolcat
+echo -e "${RED}___________________________________________________________${NC}"
 echo -e "\n\n"
 
-# Input for Evil name
-echo -e "${GREEN}[*] ${CYAN}Enter your Evil name: ${NC}"
-read evil_name
+# Input section with validation
+while true; do
+    echo -e "${GREEN}[*] ${CYAN}Enter your Hacker Name: ${NC}"
+    read -r hacker_name
+    if [ -z "$hacker_name" ]; then
+        echo -e "${RED}[!] Error: Hacker name cannot be empty!${NC}"
+    else
+        break
+    fi
+done
 
-# Input for Banner name
-echo -e "${GREEN}[*] ${CYAN}Enter your Banner name: ${NC}"
-read banner_name
+while true; do
+    echo -e "${GREEN}[*] ${CYAN}Enter your Tagline: ${NC}"
+    read -r tagline
+    if [ -z "$tagline" ]; then
+        echo -e "${RED}[!] Error: Tagline cannot be empty!${NC}"
+    else
+        break
+    fi
+done
 
-# Create banner file
-cat << EOF > $PREFIX/etc/bash.bashrc
-#!/data/data/com.termux/files/usr/bin/bash
-clear
-echo -e "${RED}___________________________________________________________"
-echo -e "${CYAN}    ██╗  ██╗ █████╗  ██████╗██╗  ██╗███████╗██████╗       "
-echo -e "${CYAN}    ██║  ██║██╔══██╗██╔════╝██║ ██╔╝██╔════╝██╔══██╗      "
-echo -e "${CYAN}    ███████║███████║██║     █████╔╝ █████╗  ██████╔╝      "
-echo -e "${CYAN}    ██╔══██║██╔══██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗      "
-echo -e "${CYAN}    ██║  ██║██║  ██║╚██████╗██║  ██╗███████╗██║  ██║      "
-echo -e "${CYAN}    ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝      "
-echo -e "${RED}___________________________________________________________"
-echo -e "${PURPLE}    Evil Name: ${WHITE}$evil_name"
-echo -e "${PURPLE}    Banner By: ${WHITE}$banner_name"
-echo -e "${RED}___________________________________________________________"
-echo -e "${YELLOW}                                                          "
-echo -e "${YELLOW}                      by ${WHITE}RAYHAN ${YELLOW}                      "
-echo -e "${RED}___________________________________________________________${NC}"
+# Backup existing files
+echo -e "\n${GREEN}[*] ${CYAN}Backing up existing configuration...${NC}"
+cp "$PREFIX"/etc/bash.bashrc "$PREFIX"/etc/bash.bashrc.bak 2>/dev/null
+cp "$PREFIX"/etc/motd "$PREFIX"/etc/motd.bak 2>/dev/null
+
+# Create new bash.bashrc
+echo -e "${GREEN}[*] ${CYAN}Creating advanced banner configuration...${NC}"
+cat << EOF > "$PREFIX"/etc/bash.bashrc
+# Default bash.bashrc for Termux
+PS1='\[\e[0;32m\]\$\[\e[m\] '
+
+# Banner function
+display_banner() {
+    clear
+    echo -e "${RED}___________________________________________________________"
+    echo -e "${CYAN}    ██╗  ██╗ █████╗  ██████╗██╗  ██╗███████╗██████╗       "
+    echo -e "${CYAN}    ██║  ██║██╔══██╗██╔════╝██║ ██╔╝██╔════╝██╔══██╗      "
+    echo -e "${CYAN}    ███████║███████║██║     █████╔╝ █████╗  ██████╔╝      "
+    echo -e "${CYAN}    ██╔══██║██╔══██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗      "
+    echo -e "${CYAN}    ██║  ██║██║  ██║╚██████╗██║  ██╗███████╗██║  ██║      "
+    echo -e "${CYAN}    ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝      "
+    echo -e "${RED}___________________________________________________________"
+    echo -e "${CYAN}    _   _             _             "
+    echo -e "${CYAN}   | | | | __ _ _ __ | | _____ _ __ "
+    echo -e "${CYAN}   | |_| |/ _\` | '_ \| |/ / _ \ '__|"
+    echo -e "${CYAN}   |  _  | (_| | | | |   <  __/ |   "
+    echo -e "${CYAN}   |_| |_|\__,_|_| |_|_|\_\___|_|   "
+    echo -e "${RED}___________________________________________________________"
+    echo -e "${PURPLE}    Hacker: ${WHITE}$hacker_name"
+    echo -e "${PURPLE}    Tagline: ${WHITE}$tagline"
+    echo -e "${RED}___________________________________________________________"
+    echo -e "${YELLOW}                      by ${WHITE}RAYHAN ${YELLOW}                      "
+    echo -e "${RED}___________________________________________________________${NC}"
+    echo
+    neofetch
+}
+
+# Display banner on start
+display_banner
 EOF
 
 # Create motd file
-cat << EOF > $PREFIX/etc/motd
+cat << EOF > "$PREFIX"/etc/motd
 ${RED}___________________________________________________________
 ${CYAN}    ██╗  ██╗ █████╗  ██████╗██╗  ██╗███████╗██████╗       
 ${CYAN}    ██║  ██║██╔══██╗██╔════╝██║ ██╔╝██╔════╝██╔══██╗      
@@ -73,26 +129,45 @@ ${CYAN}    ██╔══██║██╔══██║██║     ██�
 ${CYAN}    ██║  ██║██║  ██║╚██████╗██║  ██╗███████╗██║  ██║      
 ${CYAN}    ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝      
 ${RED}___________________________________________________________
-${PURPLE}    Evil Name: ${WHITE}$evil_name
-${PURPLE}    Banner By: ${WHITE}$banner_name
+${CYAN}    _   _             _             
+${CYAN}   | | | | __ _ _ __ | | _____ _ __ 
+${CYAN}   | |_| |/ _\` | '_ \| |/ / _ \ '__|
+${CYAN}   |  _  | (_| | | | |   <  __/ |   
+${CYAN}   |_| |_|\__,_|_| |_|_|\_\___|_|   
 ${RED}___________________________________________________________
-${YELLOW}                      
+${PURPLE}    Hacker: ${WHITE}$hacker_name
+${PURPLE}    Tagline: ${WHITE}$tagline
+${RED}___________________________________________________________
 ${YELLOW}                      by ${WHITE}RAYHAN ${YELLOW}                      
 ${RED}___________________________________________________________${NC}
 EOF
 
-echo -e "\n${GREEN}[*] ${CYAN}Setting up banner...${NC}"
-sleep 2
+# Set permissions
+chmod 644 "$PREFIX"/etc/bash.bashrc
+chmod 644 "$PREFIX"/etc/motd
 
-echo -e "\n${GREEN}[*] ${CYAN}Banner setup complete!${NC}"
-echo -e "${YELLOW}[!] ${CYAN}Restart Termux to see your new banner${NC}\n"
+# Completion message
+echo -e "\n${GREEN}[✓] ${CYAN}Banner setup completed successfully!${NC}"
+echo -e "${YELLOW}[!] ${CYAN}Please restart Termux to see your awesome new banner!${NC}\n"
 
-# Add some cool ASCII art that will be displayed after setup
+# Preview
+echo -e "${GREEN}[*] ${CYAN}Here's a preview of your hacker banner:${NC}"
 echo -e "${RED}___________________________________________________________"
-echo -e "${CYAN}    ███████╗████████╗ █████╗ ████████╗███████╗██████╗      "
-echo -e "${CYAN}    ██╔════╝╚══██╔══╝██╔══██╗╚══██╔══╝██╔════╝██╔══██╗     "
-echo -e "${CYAN}    ███████╗   ██║   ███████║   ██║   █████╗  ██████╔╝     "
-echo -e "${CYAN}    ╚════██║   ██║   ██╔══██║   ██║   ██╔══╝  ██╔══██╗     "
-echo -e "${CYAN}    ███████║   ██║   ██║  ██║   ██║   ███████╗██║  ██║     "
-echo -e "${CYAN}    ╚══════╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝     "
+echo -e "${CYAN}    ██╗  ██╗ █████╗  ██████╗██╗  ██╗███████╗██████╗       "
+echo -e "${CYAN}    ██║  ██║██╔══██╗██╔════╝██║ ██╔╝██╔════╝██╔══██╗      "
+echo -e "${CYAN}    ███████║███████║██║     █████╔╝ █████╗  ██████╔╝      "
+echo -e "${CYAN}    ██╔══██║██╔══██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗      "
+echo -e "${CYAN}    ██║  ██║██║  ██║╚██████╗██║  ██╗███████╗██║  ██║      "
+echo -e "${CYAN}    ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝      "
+echo -e "${RED}___________________________________________________________"
+echo -e "${CYAN}    _   _             _             "
+echo -e "${CYAN}   | | | | __ _ _ __ | | _____ _ __ "
+echo -e "${CYAN}   | |_| |/ _\` | '_ \| |/ / _ \ '__|"
+echo -e "${CYAN}   |  _  | (_| | | | |   <  __/ |   "
+echo -e "${CYAN}   |_| |_|\__,_|_| |_|_|\_\___|_|   "
+echo -e "${RED}___________________________________________________________"
+echo -e "${PURPLE}    Hacker: ${WHITE}$hacker_name"
+echo -e "${PURPLE}    Tagline: ${WHITE}$tagline"
+echo -e "${RED}___________________________________________________________"
+echo -e "${YELLOW}                      by ${WHITE}RAYHAN ${YELLOW}                      "
 echo -e "${RED}___________________________________________________________${NC}"
