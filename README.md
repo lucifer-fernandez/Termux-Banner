@@ -22,7 +22,17 @@ Before getting started, make sure you have:
 - ✅ Active internet connection
 - ✅ Basic knowledge of running shell scripts in Termux
 
+
 ---
+
+## 📸 Preview
+### Input Screen
+![Input Screen](https://i.postimg.cc/B6KjBV1R/Screenshot-20250602-124129-1.jpg)
+### Output Screen
+![Output Screen](https://i.postimg.cc/cL05yqxM/Screenshot-20250602-124441-1.jpg)
+
+---
+
 
 ## 🔧 Installation
 
@@ -117,15 +127,6 @@ lolcat (installed via gem)
 
 ---
 
-📸 Screenshots
-
-> Add screenshots here to showcase your awesome banner!
-You can take a screenshot of Termux after installing the banner and upload it to this repo.
-
-
-
-
----
 
 🤝 Contributing
 
