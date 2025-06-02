@@ -1,76 +1,158 @@
-# Ultimate Termux Banner by Rayhan
+# 🌟 Termux Banner
 
-A powerful and customizable Termux banner script that transforms your terminal into a hacker's workstation with stunning ASCII art and personalized information.
+Customize your Termux startup screen with style!  
+This script adds a vibrant, personalized ASCII art banner using `cowsay`, `toilet`, and `lolcat`, giving your terminal a cool and colorful identity.
 
-## Features ✨
+---
 
-- 🔥 **Hacker-themed ASCII art** with realistic face
-- 🌈 **Colorful animated introduction**
-- 📛 **Customizable hacker name and tagline**
-- 📊 **System info integration** (via neofetch)
-- 💾 **Automatic backup** of original configuration
-- ✅ **Input validation** to prevent errors
-- 🎭 **Cool typing animation effect**
-- 🖥️ **Preview system** before applying changes
+## 🚀 Features
 
-## Installation Guide 📥
+✅ Stylish ASCII art banner on Termux startup  
+✅ Animated and colorful welcome text  
+✅ Custom name input with font and color effects  
+✅ Easily removable—restore to default with one command
 
-### Prerequisites
-Ensure you have these packages installed:
+---
+
+## 📦 Prerequisites
+
+Before getting started, make sure you have:
+
+- ✅ **Termux** installed on your Android device
+- ✅ Active internet connection
+- ✅ Basic knowledge of running shell scripts in Termux
+
+---
+
+## 🔧 Installation
+
+Follow these simple steps to get your custom banner:
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/lucifer-fernandez/Termux-Banner.git
+   cd Termux-Banner
+	 ```
+
+2. Make the script executable:
 ```bash
-pkg update -y && pkg upgrade -y
-pkg install -y git wget curl neofetch figlet toilet ruby
-gem install lolcat
+chmod +x setup-banner.sh
 ```
 
-### Installation Method 1 (Direct Download)
+3. Run the script:
 ```bash
-wget https://raw.githubusercontent.com/rayhankhan4u/Termux-Banner/main/termux-banner.sh
-chmod +x termux-banner.sh
-./termux-banner.sh
+./setup-banner.sh
 ```
 
-### Installation Method 2 (Git Clone)
+4. Provide input:
+When prompted, enter the name you want to display (e.g., Mr. Lucifer).
+
+
+5. Restart Termux:
+Simply close and reopen Termux to see your custom banner.
+
+
+
+
+---
+
+🎨 Banner Layout
+
+Top Section:
+“Welcome back Chief!” displayed using cowsay with colorful rainbow effects via lolcat.
+
+Bottom Section:
+Your custom name in a futuristic font using toilet with lolcat color animation.
+
+
+
+---
+
+🗑️ Remove the Banner
+
+To remove the custom banner and return to the default:
+
+1. Make the remove script executable:
 ```bash
-git clone https://github.com/rayhankhan4u/Termux-Banner.git
-cd Termux-Banner
-chmod +x termux-banner.sh
-./termux-banner.sh
+chmod +x remove-banner.sh
 ```
 
-## Usage 🚀
-After running the script:
-1. Enter your desired hacker name
-2. Enter your custom tagline
-3. The script will automatically configure everything
-4. Restart Termux to see your awesome new banner!
+2. Run the remove script:
+```bash
+./remove-banner.sh
+```
 
-## Customization Options 🎨
-You can easily modify these elements:
-- Hacker name
-- Personal tagline
-- Color schemes (by editing the script)
-- ASCII art designs
+3. Restart Termux to apply the changes.
 
-## Troubleshooting 🔧
-If you encounter any issues:
-1. Try running `termux-setup-storage` first
-2. Ensure all required packages are installed
-3. Check your internet connection
-4. Verify you have sufficient storage space
 
-## Contributing 🤝
-Contributions are welcome! Please:
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a pull request
 
-## License 📜
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Credits 👏
-- Developed by **[Rayhan]**
-- ASCII art inspired by various open-source projects
-- Special thanks to the Termux community
+---
+
+📁 Files Included
+
+setup-banner.sh – Main setup script
+
+remove-banner.sh – Script to remove the custom banner
+
+README.md – You're reading it!
+
+LICENCE - A file include the project owner info
+
+---
+
+🔗 Dependencies
+
+These packages will be installed automatically:
+
+git, curl, wget
+
+figlet, toilet, cowsay
+
+ruby (required for lolcat)
+
+lolcat (installed via gem)
+
+
+
+---
+
+📸 Screenshots
+
+> Add screenshots here to showcase your awesome banner!
+You can take a screenshot of Termux after installing the banner and upload it to this repo.
+
+
+
+
+---
+
+🤝 Contributing
+
+Want to improve this project? Great!
+
+Fork the repository
+
+Make your changes
+
+Submit a Pull Request ✅
+
+
+Feel free to open issues for bugs or suggestions.
+
+
+---
+
+📄 License
+
+This project is licensed under the MIT License.
+See the LICENSE file for more details.
+
+
+---
+
+👤 Author
+
+Rayhan
+
+GitHub: lucifer-fernandez.github.com
