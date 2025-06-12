@@ -84,6 +84,7 @@ To remove the custom banner and return to the default:
 
 1. Make the remove script executable:
 ```bash
+cd Termux-Banner
 chmod +x remove-banner.sh
 ```
 
