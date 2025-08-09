@@ -1,160 +1,68 @@
-# 🌟 Termux Banner
+# Termux-Banner
 
-Customize your Termux startup screen with style!  
-This script adds a vibrant, personalized ASCII art banner using `cowsay`, `toilet`, and `lolcat`, giving your terminal a cool and colorful identity.
-
----
-
-## 🚀 Features
-
-✅ Stylish ASCII art banner on Termux startup  
-✅ Animated and colorful welcome text  
-✅ Custom name input with font and color effects  
-✅ Easily removable—restore to default with one command
+**Termux-Banner** is a menu-driven Python tool that allows you to set and remove custom banners in Termux.  
+It makes your Termux startup screen more attractive and personalized.
 
 ---
 
-## 📦 Prerequisites
-
-Before getting started, make sure you have:
-
-- ✅ **Termux** installed on your Android device
-- ✅ Active internet connection
-- ✅ Basic knowledge of running shell scripts in Termux
-
+## 📌 Features
+- 🎨 Set a custom banner
+- 🗑️ Remove the banner in one click
+- 💾 Automatic backup of original configuration
+- 🐍 Menu-driven interface
+- 🌈 Colorful output
 
 ---
 
-## 📸 Preview
-### Input Screen
-![Input Screen](https://i.postimg.cc/B6KjBV1R/Screenshot-20250602-124129-1.jpg)
-### Output Screen
-![Output Screen](https://i.postimg.cc/cL05yqxM/Screenshot-20250602-124441-1.jpg)
+## 📥 Installation & Usage
 
----
-
-
-## 🔧 Installation
-
-Follow these simple steps to get your custom banner:
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/lucifer-fernandez/Termux-Banner.git
-   cd Termux-Banner
-	 ```
-
-2. Make the script executable:
+### 1️⃣ Update Termux packages
 ```bash
-chmod +x setup-banner.sh
+pkg update -y && pkg upgrade -y
 ```
-
-3. Run the script:
+2️⃣ Install required packages
 ```bash
-./setup-banner.sh
+pkg install python git -y
 ```
-
-4. Provide input:
-When prompted, enter the name you want to display (e.g., Mr. Lucifer).
-
-
-5. Restart Termux:
-Simply close and reopen Termux to see your custom banner.
-
-
-
-
----
-
-🎨 Banner Layout
-
-Top Section:
-“Welcome back Chief!” displayed using cowsay with colorful rainbow effects via lolcat.
-
-Bottom Section:
-Your custom name in a futuristic font using toilet with lolcat color animation.
-
-
-
----
-
-🗑️ Remove the Banner
-
-To remove the custom banner and return to the default:
-
-1. Make the remove script executable:
+3️⃣ Clone the project from GitHub
+```bash
+git clone https://github.com/lucifer-fernandez/Termux-Banner.git
+```
+4️⃣ Go to the project directory
 ```bash
 cd Termux-Banner
-chmod +x remove-banner.sh
 ```
-
-2. Run the remove script:
+5️⃣ Run the script
 ```bash
-./remove-banner.sh
+python banner.py
 ```
 
-3. Restart Termux to apply the changes.
+---
 
+📂 File Structure
+
+Termux-Banner/
+│
+├── banner.py      # Main Python script (menu-driven)
+└── README.md      # Project documentation
+
+
+---
+
+⚠️ Notes
+
+This tool is only designed for Termux.
+
+Do not delete the backup file before removing the banner.
+
+It’s recommended to remove an old banner before setting a new one.
 
 
 
 ---
 
-📁 Files Included
+👨‍💻 Author
 
-setup-banner.sh – Main setup script
-
-remove-banner.sh – Script to remove the custom banner
-
-README.md – You're reading it!
-
-LICENCE - A file include the project owner info
-
----
-
-🔗 Dependencies
-
-These packages will be installed automatically:
-
-git, curl, wget
-
-figlet, toilet, cowsay
-
-ruby (required for lolcat)
-
-lolcat (installed via gem)
-
-
-
----
-
-
-🤝 Contributing
-
-Want to improve this project? Great!
-
-Fork the repository
-
-Make your changes
-
-Submit a Pull Request ✅
-
-
-Feel free to open issues for bugs or suggestions.
-
-
----
-
-📄 License
-
-This project is licensed under the MIT License.
-See the LICENSE file for more details.
-
-
----
-
-👤 Author
-
-Rayhan
-
-GitHub: lucifer-fernandez.github.com
+Name: Mohammad Rayhan Khan
+Facebook: https://www.facebook.com/azad.farabi.2024
+GitHub: https://github.com/lucifer-fernandez
