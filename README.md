@@ -37,15 +37,6 @@ cd Termux-Banner
 python banner.py
 ```
 
----
-
-📂 File Structure
-
-Termux-Banner/
-│
-├── banner.py      # Main Python script (menu-driven)
-└── README.md      # Project documentation
-
 
 ---
 
